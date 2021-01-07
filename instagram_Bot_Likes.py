@@ -29,7 +29,7 @@ target_user.send_keys('...')
 time.sleep(3)
 
 # instead of ... choose the user from the list and find him/her by link text
-browser.find_element(By.PARTIAL_LINK_TEXT, '...').click()
+browser.find_element(By.XPATH, '//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/div[4]/div/a').click()
 
 time.sleep(5)
 
@@ -46,17 +46,16 @@ for i in range(0, scrolling_formula):
     browser.execute_script('window.scrollBy(0, document.body.scrollHeight)')
     time.sleep(1)
 
-
 all_images.pop().click()
 time.sleep(1)
 
 number = 0
 
-while number <= len(all_images):
+while number <= number_of_posts:
     get_color = browser.find_element_by_class_name('fr66n').find_element_by_tag_name('svg').get_attribute('fill')
     if get_color == '#262626':
         browser.find_element_by_class_name('fr66n').find_element_by_tag_name('svg').click()
-    if number == len(all_images):
+    if number == number_of_posts:
         break
     else:
         browser.find_element_by_xpath('/html/body/div[5]/div[1]/div/div/a').click()
